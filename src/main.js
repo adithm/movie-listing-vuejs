@@ -11,14 +11,21 @@ Vue.use(BootstrapVue);
 Vue.use(myVueRouter);
 
 const routes = [
-    { path: '/', component: List },
+    { 
+        path: '/', 
+        name: 'List',
+        component: List,
+        props: (route) => ({
+            ...route.params
+        }) 
+    },
     {
         path: '/add',
         name: 'AddData',
         component: AddData,
         props: (route) => ({
             ...route.params
-            })
+        })
     },
 ]
 const router = new myVueRouter ({

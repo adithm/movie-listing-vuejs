@@ -79,7 +79,12 @@ export default {
                 axios.put(`http://localhost:3000/movies/${this.movieId}`, this.$data['movie'])
                     .then(res => { 
                         if (typ === 'movie') 
-                            this.$router.push('/') 
+                            this.$router.push({
+                                name: 'List',
+                                params: {
+                                    propNotifyMsg: `${this.$data['movie'].name} Edited`
+                                }
+                            }) 
                         })
             } else {
                 let locData = rData
@@ -97,7 +102,12 @@ export default {
                 axios.post(`http://localhost:3000/${typ}s`, locData)
                     .then(res => { 
                         if (typ === 'movie') 
-                            this.$router.push('/') 
+                            this.$router.push({
+                                name: 'List',
+                                params: {
+                                    propNotifyMsg: `${locData.name} Added`
+                                }
+                            })
                         })
             }
         }
@@ -106,6 +116,7 @@ export default {
         'common-data': commonData
     }
 }
+
 </script>
 
 <style scoped>

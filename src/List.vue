@@ -12,6 +12,9 @@
                 <b-button variant="danger" @click="deleteData(key)">Delete</b-button>&nbsp;
             </div>
         </div>
+        <div v-show="notifyMsg !== undefined" class="notify" :key="notifyMsg">
+            {{notifyMsg}}
+        </div>
     </div>
 </template>
 
@@ -20,11 +23,13 @@ import  axios from 'axios';
 import Vue from 'vue';
 
 export default {
+    props: ['propNotifyMsg'],
     data () {
         return {
             actors: {},
             producers: {},
             movies: {},
+            notifyMsg: this.propNotifyMsg,
             getArr: ['actors', 'producers', 'movies']
         }
     },
@@ -58,9 +63,14 @@ export default {
         },
         deleteData(key) {
             if (confirm('Are you sure you want to delete?')) {
+                this.notifyMsg = `${this.movies[key].name} Deleted`
                 Vue.delete(this.movies, key);
                 axios.delete(`http://localhost:3000/movies/${key}`)
             }
+        },
+        func() {
+            console.log('in')
+            this.show = true;
         }
     }
 }
@@ -81,6 +91,26 @@ export default {
         box-shadow: 0 0 4px 1px hsla(349, 100%, 2%, 0.12);
         /* border: 1px solid #b00020; */
     }
+    .notify {
+        position: fixed;
+        top: 80%;
+        left: 80%;
+        width: 12rem;
+        height: 6rem;
+        line-height: 6rem;
+        background-color: hsl(50, 100%, 82%);
+        border-left: 4px solid #FFB03B;
+        text-align: center;
+        font-weight: 450;
+        box-shadow: 0 2px 4px;
+        animation: fadeinout 4s linear 1 forwards;
+    }
+    @keyframes fadeinout {
+        0% { opacity: 0; }
+        30% { opacity: 1; }
+        70% { opacity: 1; }
+        100% { opacity: 0; }
+    }
     a {
         color: #204E5F;
         font-weight: 700;
@@ -88,6 +118,5 @@ export default {
     }
     p {
         font-weight: 450;
-
     }
 </style>
