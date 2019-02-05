@@ -34,7 +34,9 @@ import  axios from 'axios';
 import commonData from './commonData.vue';
 
 export default {
-    props: ['movieId'],
+    props: {
+        movieId: String
+    },
     data () {
         return {
             movie: {
@@ -80,7 +82,7 @@ export default {
                     .then(res => { 
                         if (typ === 'movie') 
                             this.$router.push({
-                                name: 'List',
+                                name: 'ListView',
                                 params: {
                                     propNotifyMsg: `${this.$data['movie'].name} Edited`
                                 }
@@ -103,7 +105,7 @@ export default {
                     .then(res => { 
                         if (typ === 'movie') 
                             this.$router.push({
-                                name: 'List',
+                                name: 'ListView',
                                 params: {
                                     propNotifyMsg: `${locData.name} Added`
                                 }

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import myVueRouter from 'vue-router'
-import List from './List.vue'
+import ListView from './ListView.vue'
 import AddData from './AddData.vue'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -13,8 +13,8 @@ Vue.use(myVueRouter);
 const routes = [
     { 
         path: '/', 
-        name: 'List',
-        component: List,
+        name: 'ListView',
+        component: ListView,
         props: (route) => ({
             ...route.params
         }) 
