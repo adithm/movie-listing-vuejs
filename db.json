@@ -49,6 +49,16 @@
       "bio": "",
       "movies": [],
       "id": 5
+    },
+    {
+      "name": "aadith",
+      "sex": "M",
+      "dateOfBirth": "",
+      "bio": "",
+      "movies": [
+        "1"
+      ],
+      "id": 6
     }
   ],
   "producers": [

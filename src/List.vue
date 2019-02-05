@@ -93,22 +93,22 @@ export default {
     }
     .notify {
         position: fixed;
-        top: 80%;
-        left: 80%;
-        width: 12rem;
-        height: 6rem;
-        line-height: 6rem;
+        top: 6rem;
+        left: calc(50% - 12rem);
+        width: 24rem;
+        height: 4.5rem;
+        line-height: 4.5rem;
         background-color: hsl(50, 100%, 82%);
         border-left: 4px solid #FFB03B;
         text-align: center;
         font-weight: 450;
         box-shadow: 0 2px 4px;
-        animation: fadeinout 4s linear 1 forwards;
+        animation: fadeinout 3.5s linear 1 forwards;
     }
     @keyframes fadeinout {
         0% { opacity: 0; }
-        30% { opacity: 1; }
-        70% { opacity: 1; }
+        20% { opacity: 1; }
+        80% { opacity: 1; }
         100% { opacity: 0; }
     }
     a {
