@@ -49,16 +49,6 @@
       "bio": "",
       "movies": [],
       "id": 5
-    },
-    {
-      "name": "aadith",
-      "sex": "M",
-      "dateOfBirth": "",
-      "bio": "",
-      "movies": [
-        "1"
-      ],
-      "id": 6
     }
   ],
   "producers": [
@@ -162,7 +152,7 @@
       "producer": 3
     },
     {
-      "name": "Sixth S",
+      "name": "Sixth Movie",
       "yearOfRelease": "08/05/1989",
       "plot": "No head or tail",
       "poster": "http://someurl.com/somePoster.jpg",

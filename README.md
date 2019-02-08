@@ -1,4 +1,4 @@
-# my-imdb
+# Movie Listing App
 
 > A Vue.js project
 

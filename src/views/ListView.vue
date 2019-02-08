@@ -40,10 +40,10 @@ export default {
             axios.get(`http://localhost:3000/${elm}`)
                 .then(response => {
                     for (let val in response.data) {
-                        let dat = response.data[val]
-                        let key = dat.id
-                        delete dat.id
-                        Vue.set(this[elm], key, dat)
+                        let data = response.data[val]
+                        let key = data.id
+                        delete data.id
+                        Vue.set(this[elm], key, data)
                     }
                 })
         }
@@ -69,10 +69,6 @@ export default {
                 Vue.delete(this.movies, key);
                 axios.delete(`http://localhost:3000/movies/${key}`)
             }
-        },
-        func() {
-            console.log('in')
-            this.show = true;
         }
     }
 }
