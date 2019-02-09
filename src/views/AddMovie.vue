@@ -27,16 +27,13 @@
             </b-form-radio-group>
         </b-form-group>
         <p class="errors" v-if="errors.has('producer')">{{ errors.first('producer') }}</p>
-
+        <br>
 
         <b-button variant="success" @click="submitData('movie')">Submit Movie</b-button>
+        <router-link to="/"> <button class="clear">Cancel</button> </router-link>
  
-        <template v-if="actorShow">
-            <common-data :movies="movies" @cancel="actorShow = !actorShow" @submitReturn="submitData('actor', $event)">Actor</common-data>
-        </template>
-        <template v-if="producerShow">
-            <common-data :movies="movies" @cancel="producerShow = !producerShow" @submitReturn="submitData('producer', $event)">Producer</common-data>
-        </template>
+        <common-data v-if="actorShow" :movies="movies" @cancel="actorShow = !actorShow" @submitReturn="submitData('actor', $event)">Actor</common-data>
+        <common-data v-if="producerShow" :movies="movies" @cancel="producerShow = !producerShow" @submitReturn="submitData('producer', $event)">Producer</common-data>
     </div> 
 </template>
 
@@ -170,11 +167,20 @@ export default {
         margin: 10px 10px 50px 10px;
         background-color: white;
     }
+    .clear {
+        color: hsl(0, 0%, 45%);
+        font-weight: 600;
+        background-color: Transparent;
+        border: none;
+        cursor:pointer;
+        outline:none;
+        margin-left: 1.2rem;
+    }
     /deep/ input[type="text"] {
         box-shadow: inset 0 2px 4px hsla(0, 0%, 0%, 0.1); 
     }
     /deep/ .errors {
-        color: red;
+        color:  #cb2431;
         font-size: 0.8rem;
         margin-top: -0.8rem;
         margin-bottom: 1.6rem;

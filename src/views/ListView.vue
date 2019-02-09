@@ -91,7 +91,7 @@ export default {
     }
     .notify {
         position: fixed;
-        top: 6rem;
+        top: 7rem;
         left: calc(50% - 12rem);
         width: 24rem;
         height: 4.5rem;

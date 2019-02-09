@@ -1,19 +1,18 @@
 <template>
 <div id="app">
+    <header>
+        <nav class="container">
+            <ul>
+                <router-link to="/" tag="li" exact>
+                    <a>View Movies</a>
+                </router-link>
+                <router-link to="/add" tag="li" exact>
+                    <a>Create</a>
+                </router-link>
+            </ul>
+        </nav>
+    </header>
     <div class="container">
-        <br>
-        <ul class="nav nav-fill nav-tabs">
-            <li class="nav-item">
-                <router-link to="/">
-                    <a :class="[{ active: active_el === 1 }, 'nav-link', 'mylink']" @click="activate(1)">View Movies</a>
-                </router-link>
-            </li>
-            <li class="nav-item">
-                <router-link to="/add">
-                    <a :class="[{ active: active_el === 2 }, 'nav-link', 'mylink']" @click="activate(2)">Create</a>
-                </router-link>
-            </li>
-        </ul>
         <br><br><br><br>
         <router-view></router-view>
     </div>
@@ -22,30 +21,47 @@
 
 <script>
 export default {
-    data () {
-        return {
-            active_el : 1
-        }
-    },
-    methods : {
-        activate : function(el) {
-            this.active_el = el;
-        }
-    }
 }
 </script>
 
 <style scoped>
-    .mylink {
+    header {
+        background: hsl(210, 12%, 16%);
+    }
+    nav ul {
+        list-style: none;
+    }
+    nav li {
+        display: inline-block;
+        height: 5rem;
+        text-align: center;
+        line-height: 5rem;
+        margin-right: 4rem;
+        margin-left: 2rem;
+        position: relative;
+    }
+    nav a {
+        color: white;
         font-size: 1.4rem;
-        font-weight: bold;
+        font-weight: 600;
+        text-decoration: none;
+    }
+    nav li:not(.router-link-exact-active) a:hover {
+        color: #c8c9cb;
     }
     #app {
         background-color: #EDF7F5; 
         min-height: 100vh;
         min-width: 100%;
     }
-    a {
-        color: hsl(181, 21%, 47%);
+    li.router-link-exact-active::before {
+        content: '';
+        display: block;
+        height: 5px;
+        background-color: #07b79a;
+
+        position: relative;
+        top: 5rem;
+        width: 100%;
     }
 </style>
