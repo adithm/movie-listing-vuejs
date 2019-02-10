@@ -84,7 +84,7 @@ export default {
         background-color:  hsla(182, 30%, 78%, 0.5);
     }
     .movie-box:nth-child(odd) {
-        background-color: #EDF7F5;
+        background-color: #EDF7F6;
     }
     .movie-expanded {
         box-shadow: 0 0 4px 1px hsla(349, 100%, 2%, 0.12);
