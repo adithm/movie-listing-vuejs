@@ -12,6 +12,7 @@
                 <b-button variant="danger" @click="deleteData(key)">Delete</b-button>&nbsp;
             </div>
         </div>
+        <br>
         <div v-show="notifyMsg !== undefined" class="notify" :key="notifyMsg">
             {{notifyMsg}}
         </div>

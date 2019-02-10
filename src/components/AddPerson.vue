@@ -3,7 +3,7 @@
         <template>{{ toBottom() }}</template>
         <p>Add <slot></slot> </p>
 
-        <b-form-input v-validate="'alpha|required'" name="name" v-model="person['name']" placeholder="name"></b-form-input><br>
+        <b-form-input v-validate="'required|alpha_spaces'" name="name" v-model="person['name']" placeholder="name"></b-form-input><br>
         <p class="errors" v-if="errors.has('name')">{{ errors.first('name') }}</p>
 
         <b-form-radio-group v-validate="'required'" name="sex" v-model="person['sex']">
@@ -71,10 +71,13 @@ export default {
 
 <style scoped>
     .rounded-box {
+        position: relative;
+        background: white;
         padding: 25px;
         border: 2px solid lightblue;
         border-radius: 20px;
         box-shadow: 4px 6px 35px;
         margin-top: 30px;
+        z-index: 2;
     }
 </style>

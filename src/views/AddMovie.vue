@@ -34,6 +34,8 @@
  
         <common-data v-if="actorShow" :movies="movies" @cancel="actorShow = !actorShow" @submitReturn="submitData('actor', $event)">Actor</common-data>
         <common-data v-if="producerShow" :movies="movies" @cancel="producerShow = !producerShow" @submitReturn="submitData('producer', $event)">Producer</common-data>
+
+        <div :class="{overlay : (actorShow || producerShow)}"></div>
     </div> 
 </template>
 
@@ -79,7 +81,7 @@ export default {
                     }
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log('Something went wrong', error);
                 })
         }
     },
@@ -88,39 +90,47 @@ export default {
             let data = this.formatMovie(this.$data['movie'])
             axios.put(`http://localhost:3000/movies/${this.movieId}`, data)
                 .then(res => { 
-                        this.$router.push({
-                            name: 'ListView',
-                            params: {
-                                propNotifyMsg: `${this.$data['movie'].name} Edited`
-                            }
-                        }) 
-                    })
+                    this.$router.push({
+                        name: 'ListView',
+                        params: {
+                            propNotifyMsg: `${this.$data['movie'].name} Edited`
+                        }
+                    }) 
+                })
+                .catch(error => {
+                    console.log('Something went wrong', error)
+                })
         },
         submitPerson(typ, personData) {
             personData.dateOfBirth = this.formatDate(personData.dateOfBirth)
-            if (typ === 'actor')
-                this.movie.actors.push(Object.keys(this.actors).length + 1)
-            else
-                this.movie.producer = Object.keys(this.producers).length + 1
-
-            this.$data[typ + 'Show'] = !this.$data[typ + 'Show']
-            this.$set(this[`${typ}s`], Object.keys(this[`${typ}s`]).length + 1, personData)
-
             axios.post(`http://localhost:3000/${typ}s`, personData)
+                .then(res => {
+                    if (typ === 'actor')
+                        this.movie.actors.push(Object.keys(this.actors).length + 1)
+                    else
+                        this.movie.producer = Object.keys(this.producers).length + 1
+
+                    this.$data[typ + 'Show'] = !this.$data[typ + 'Show']
+                    this.$set(this[`${typ}s`], Object.keys(this[`${typ}s`]).length + 1, personData)
+                })
+                .catch(error => {
+                    console.log('Something went wrong', error)
+                })
         },
         submitMovie() {
             let data = this.formatMovie(this.$data['movie'])
-            this.$set(this.movies, Object.keys(this.movies).length + 1, data)
-
             axios.post(`http://localhost:3000/movies`, data)
                 .then(res => { 
-                        this.$router.push({
-                            name: 'ListView',
-                            params: {
-                                propNotifyMsg: `${data.name} Added`
-                            }
-                        })
+                    this.$router.push({
+                        name: 'ListView',
+                        params: {
+                            propNotifyMsg: `${data.name} Added`
+                        }
                     })
+                })
+                .catch(error => {
+                    console.log('Something went wrong', error)
+                })
         },
         submitData(typ, personData = undefined) {            
             if (typ === 'movie' && this.movieId != undefined) {
@@ -155,7 +165,6 @@ export default {
         'common-data': commonData
     }
 }
-
 </script>
 
 <style scoped>
@@ -172,8 +181,8 @@ export default {
         font-weight: 600;
         background-color: Transparent;
         border: none;
-        cursor:pointer;
-        outline:none;
+        cursor: pointer;
+        outline: none;
         margin-left: 1.2rem;
     }
     /deep/ input[type="text"] {
@@ -184,5 +193,14 @@ export default {
         font-size: 0.8rem;
         margin-top: -0.8rem;
         margin-bottom: 1.6rem;
+    }
+    .overlay {
+        background: hsla(0, 0%, 0%, 0.3);
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        z-index: 1;
     }
 </style>

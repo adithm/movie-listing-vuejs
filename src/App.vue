@@ -24,6 +24,12 @@ export default {
 }
 </script>
 
+<style>
+    body {
+        background-color: #EDF7F5; 
+    }
+</style>
+
 <style scoped>
     header {
         background: hsl(210, 12%, 16%);
@@ -36,8 +42,7 @@ export default {
         height: 5rem;
         text-align: center;
         line-height: 5rem;
-        margin-right: 4rem;
-        margin-left: 2rem;
+        margin-left: 3rem;
         position: relative;
     }
     nav a {
@@ -48,11 +53,6 @@ export default {
     }
     nav li:not(.router-link-exact-active) a:hover {
         color: #c8c9cb;
-    }
-    #app {
-        background-color: #EDF7F5; 
-        min-height: 100vh;
-        min-width: 100%;
     }
     li.router-link-exact-active::before {
         content: '';
