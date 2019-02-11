@@ -3,7 +3,6 @@
         <div :class="[{'movie-expanded' : movie.show}, 'movie-box']" v-for="(movie, key) in movies" :key="key">
             <a href="#" @click="movie.show = !movie.show"> {{key}}. {{movie.name}} </a>
             <div v-if="movie.show">
-                <br>
                 <div class="flexbox">
                     <div> <img :src="movie.poster"> </div>
                     <div>
@@ -106,6 +105,7 @@ export default {
     .flexbox {
         display: flex;
         justify-content: center;
+        margin: 1rem;
     }
     .notify {
         position: fixed;
@@ -133,6 +133,9 @@ export default {
         font-size: 1.15rem;
     }
     p {
+        font-size: 0.95rem;
         font-weight: 450;
+        margin: 0;
+        padding: 0;
     }
 </style>
