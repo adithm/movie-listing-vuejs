@@ -49,6 +49,16 @@
       "bio": "",
       "movies": [],
       "id": 5
+    },
+    {
+      "name": "six",
+      "sex": "F",
+      "dateOfBirth": "01/02/2019",
+      "bio": "s",
+      "movies": [
+        "1"
+      ],
+      "id": 6
     }
   ],
   "producers": [

@@ -1,5 +1,5 @@
 <template>
-    <div class="rounded-box container">
+    <b-modal v-model="modalShow" hide-footer hide-header no-close-on-esc no-close-on-backdrop>
         <template>{{ toBottom() }}</template>
         <p>Add <slot></slot> </p>
 
@@ -28,7 +28,7 @@
 
         <b-button variant="success" @click="submitData()">Submit <slot></slot> </b-button>&nbsp;
         <b-button @click="$emit('cancel')">Cancel</b-button>
-    </div>
+    </b-modal>
 </template>
 
 <script>
@@ -41,6 +41,8 @@ export default {
     },
     data () {
         return {
+            modalShow: true,
+            hide: true,
             person: {
                 name: '',
                 sex: '',
