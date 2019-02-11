@@ -1,7 +1,7 @@
 <template>
-    <b-modal v-model="modalShow" hide-footer hide-header no-close-on-esc no-close-on-backdrop>
+    <b-modal v-model="modalShow" hide-footer hide-header-close no-close-on-esc no-close-on-backdrop>
         <template>{{ toBottom() }}</template>
-        <p>Add <slot></slot> </p>
+        <div slot="modal-title"> Add <slot></slot> </div>
 
         <b-form-input v-validate="'required|alpha_spaces'" name="name" v-model="person['name']" placeholder="name"></b-form-input><br>
         <p class="errors" v-if="errors.has('name')">{{ errors.first('name') }}</p>
