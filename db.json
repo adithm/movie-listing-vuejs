@@ -171,6 +171,17 @@
       ],
       "producer": 3,
       "id": 6
+    },
+    {
+      "name": "Seven",
+      "yearOfRelease": "01/02/2019",
+      "plot": "a",
+      "poster": "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg",
+      "actors": [
+        "1"
+      ],
+      "producer": "1",
+      "id": 7
     }
   ]
 }
