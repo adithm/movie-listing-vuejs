@@ -1,13 +1,18 @@
 <template>
     <div class="container">
         <div :class="[{'movie-expanded' : movie.show}, 'movie-box']" v-for="(movie, key) in movies" :key="key">
-             <a href="#" @click="movie.show = !movie.show"> {{key}}. {{movie.name}} </a>
+            <a href="#" @click="movie.show = !movie.show"> {{key}}. {{movie.name}} </a>
             <div v-if="movie.show">
                 <br>
-                <p>{{movie.yearOfRelease}}</p>
-                <p>Actors:</p>
-                <p v-for="actor in movie.actors" :key="actor">{{ actors[actor].name }} </p>
-                <p> Porducer : {{ producers[movie.producer].name }}</p>
+                <div class="flexbox">
+                    <div> <img :src="movie.poster"> </div>
+                    <div>
+                        <p>{{movie.yearOfRelease}}</p>
+                        <p>Actors:</p>
+                        <p v-for="actor in movie.actors" :key="actor">{{ actors[actor].name }} </p>
+                        <p> Porducer : {{ producers[movie.producer].name }}</p>
+                    </div>
+                </div>
                 <b-button variant="warning" @click="editData(key)">Edit</b-button>&nbsp;
                 <b-button variant="danger" @click="deleteData(key)">Delete</b-button>&nbsp;
             </div>
@@ -76,6 +81,14 @@ export default {
 </script>
 
 <style scoped>
+    img {
+        width: 100px;
+        height: 100px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        border: 1px solid #ccc;
+        margin-right: 1rem;
+    }
     .movie-box {
         text-align: center;
         padding: 20px;
@@ -89,6 +102,10 @@ export default {
     .movie-expanded {
         box-shadow: 0 0 4px 1px hsla(349, 100%, 2%, 0.12);
         /* border: 1px solid #b00020; */
+    }
+    .flexbox {
+        display: flex;
+        justify-content: center;
     }
     .notify {
         position: fixed;
